@@ -6,6 +6,7 @@
         <ul>
         <li v-for="project in projects" :key="project.id">
             {{ project.title }}
+            <img :src="`${store.imgPath}${project.image}`" :alt="project.title">
         </li>
         </ul>
         <button @click="previousPage()">Indietro</button>
