@@ -1,28 +1,41 @@
 <template>
-    <div>
+  
+  <main class="container">
+    <h1>AppProjects</h1>
 
-        <h1>AppProjects</h1>
+    <div class="row justify-content-center ">
+      <div class="col-4" v-for="project in projects" :key="project.id">
+        <ProjectsCard :project="project"/>
+      </div>
 
-        <ul>
-        <li v-for="project in projects" :key="project.id">
-            {{ project.title }}
-            <img :src="`${store.imgPath}${project.image}`" :alt="project.title">
-        </li>
+      <nav class="col-auto ">
+        <ul class="pagination mt-4">
+          <li class="page-item"><button @click="previousPage()" class="page-link">Previous</button></li>
+          <li class="page-item"><button class="page-link">1</button></li>
+          <li class="page-item"><button class="page-link">2</button></li>
+          <li class="page-item"><button class="page-link">3</button></li>
+          <li class="page-item"><button @click="nextPage()" class="page-link">Next</button></li>
         </ul>
-        <button @click="previousPage()">Indietro</button>
-        <button @click="nextPage()">Avanti</button>
-
+      </nav>
+      
     </div>
+  </main>
+
   </template>
   
   <script>
 
   import axios from "axios";
   import { store } from "../store.js";
+  import ProjectsCard from '../components/ProjectsCard.vue';
   
   export default {
   
     name: "AppProjects",
+
+    components: {
+      ProjectsCard,
+    },
   
     data() {
       return{
