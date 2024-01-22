@@ -1,5 +1,5 @@
 <template>
-  
+
   <main class="container">
     <h1>AppProjects</h1>
 
@@ -50,9 +50,9 @@
       getAllProjects() {
         axios
           .get(store.apiUrl + "/projects", { params: { page: this.currentPage } }).then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             this.projects = res.data.result.data;
-            console.log(this.projects);
+            // console.log(this.projects);
   
             this.currentPage = res.data.result.current_page;
             this.lastPage = res.data.result.last_page;

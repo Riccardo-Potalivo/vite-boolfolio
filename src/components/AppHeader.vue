@@ -10,7 +10,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li v-for="(item, index) in menuItems"  :key="index">
-            <router-link class="nav-link" :to="{name: item.routeName}">{{ item.label }}</router-link>
+            <router-link class="nav-link" active-class="active" :to="{name: item.routeName}">{{ item.label }}</router-link>
         </li>
         
       </ul>
