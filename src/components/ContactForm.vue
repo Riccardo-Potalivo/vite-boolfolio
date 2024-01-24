@@ -3,22 +3,22 @@
         <form @submit.prevent="submitForm">
   <div class="mb-3">
     <label for="name" class="form-label">Your Name</label>
-    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" v-model="name">
+    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" v-model="data.name">
     <div id="nameHelp" class="form-text">Insert your name</div>
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="email">
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="data.email">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
     <label for="address" class="form-label">your address</label>
-    <input type="text" class="form-control" id="address" aria-describedby="addressHelp" v-model="address">
+    <input type="text" class="form-control" id="address" aria-describedby="addressHelp" v-model="data.address">
     <div id="addressHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
     <label for="message" class="form-label">your Message</label>
-    <textarea class="form-control" id="message" cols="30" rows="10" v-model="message"></textarea>
+    <textarea class="form-control" id="message" cols="30" rows="10" v-model="data.message"></textarea>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
@@ -37,23 +37,19 @@
         data() {
             return {
                 store,
-                name: '',
-                email: '',
-                address: '',
-                message: '',
+                data: {
+                    name: '',
+                    email: '',
+                    address: '',
+                    message: '',
+                }
             }
         },
 
         methods: {
             submitForm() {
-                const formData = {
-                    name: this.name,
-                    email: this.email,
-                    address: this.address,
-                    message: this.message
-                }
 
-                axios.post(`${this.store.apiUrl}/contacts`, formData).then((res) => {
+                axios.post(`${this.store.apiUrl}/contacts`, this.data).then((res) => {
                     console.log(res.data);
                     this.name = '';
                     this.email = '';
