@@ -36,6 +36,10 @@
                         label: "Projects",
                         routeName: "projects",
                     },
+                    {
+                        label: "Contacts",
+                        routeName: "contacts",
+                    },
                 ]
             }
         }
